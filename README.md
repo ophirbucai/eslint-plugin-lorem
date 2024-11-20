@@ -1,5 +1,7 @@
 # eslint-plugin-lorem
 
+[![npm](https://img.shields.io/npm/v/eslint-plugin-lorem.svg)](https://www.npmjs.com/package/eslint-plugin-lorem)
+
 ESLint plugin to prevent Lorem Ipsum placeholder text in your code.
 
 ## Install
@@ -8,11 +10,21 @@ ESLint plugin to prevent Lorem Ipsum placeholder text in your code.
 npm install eslint-plugin-lorem --save-dev
 ```
 
-## Usage
+## Quick Start
 
-Configure in your preferred ESLint config format:
+Add to your `.eslintrc.json`:
+```json
+{
+  "extends": ["plugin:lorem/recommended"]
+}
+```
 
-### .eslintrc.json
+That's it! The plugin will work with default settings.
+
+## Manual Configuration
+
+If you prefer manual setup or need customization:
+
 ```json
 {
   "plugins": ["lorem"],
@@ -22,60 +34,80 @@ Configure in your preferred ESLint config format:
 }
 ```
 
-### .eslintrc.js
-```js
-module.exports = {
-  plugins: ["lorem"],
-  rules: {
-    "lorem/no-lorem": "error"
-  }
-};
-```
+## Framework Support
 
-### .eslintrc.yaml
-```yaml
-plugins:
-  - lorem
-rules:
-  lorem/no-lorem: error
-```
+Works out of the box with raw HTML files, React/JSX, Vue, Svelte. It is also compatible with template literals (escapes special characters) and regular TypeScript/JavaScript strings.
 
-### package.json
+For HTML files, add to your `.eslintrc.json`:
 ```json
 {
-  "eslintConfig": {
-    "plugins": ["lorem"],
-    "rules": {
-      "lorem/no-lorem": "error"
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "parser": "eslint-html-parser"
     }
-  }
+  ]
 }
 ```
 
-### .eslintrc.cjs (for ESM projects)
-```js
-module.exports = {
-  plugins: ["lorem"],
-  rules: {
-    "lorem/no-lorem": "error"
-  }
-};
-```
+## Customization
 
-## Configuration
-
-Customize the pattern and message:
+### Add More Strings to Check
 ```json
 {
   "lorem/no-lorem": ["error", {
-    "pattern": "custom-regex-here",
-    "message": "No placeholder text please!"
+    "strings": ["dummy text", "placeholder content"]
   }]
 }
 ```
 
-Default pattern checks for "Lorem Ipsum" in English and Hebrew: `/lorem\s+ipsum|לורם\s+איפסום/i`
+### Override Default Strings
+```json
+{
+  "lorem/no-lorem": ["error", {
+    "strings": ["only check this text"],
+    "override": true
+  }]
+}
+```
+
+### Custom Error Message
+```json
+{
+  "lorem/no-lorem": ["error", {
+    "message": "Please replace placeholder text"
+  }]
+}
+```
+
+## Disabling the Rule
+
+### For a Single Line
+```js
+// eslint-disable-next-line lorem/no-lorem
+const text = "Lorem ipsum dolor sit amet";
+```
+
+### For a Block
+```js
+/* eslint-disable lorem/no-lorem */
+const text1 = "Lorem ipsum dolor sit amet";
+const text2 = "Lorem ipsum dolor sit amet";
+/* eslint-enable lorem/no-lorem */
+```
+
+### For an Entire File
+At the top of the file:
+```js
+/* eslint-disable lorem/no-lorem */
+```
+
+## Default Strings Checked
+- "lorem"
+- "ipsum"
+- "לורם"
+- "איפסום"
 
 ## License
 
-MIT
+MIT-0
