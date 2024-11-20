@@ -1,0 +1,12 @@
+{
+  "name": "eslint-plugin-lorem",
+  "version": "1.0.0",
+  "description": "ESLint plugin to prevent Lorem Ipsum usage",
+  "main": "lib/index.js",
+  "keywords": ["eslint", "eslintplugin"],
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": ">=7"
+  }
+}
