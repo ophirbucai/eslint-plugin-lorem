@@ -2,107 +2,97 @@
 
 [![npm](https://img.shields.io/npm/v/eslint-plugin-lorem.svg)](https://www.npmjs.com/package/eslint-plugin-lorem)
 
-ESLint plugin to prevent Lorem Ipsum placeholder text in your code.
+**Tired of placeholder text creeping into your production code?**
+Meet `eslint-plugin-lorem` – a lightweight ESLint plugin designed to catch unwanted strings (like Lorem Ipsum) in your codebase before they ever see the light of day.
 
-## Install
+## Why Use It?
+- **Keep Your Code Clean:**
 
-```bash
-npm install eslint-plugin-lorem --save-dev
-```
+  Prevent accidental placeholder text (and the inevitable scolding from the marketing team) from ending up in your production code.
+
+- **Easy to Configure:**
+
+  With a simple setup, you can tailor the plugin to fit the specific needs of your project.
+
+## Features
+- **Multi-file Support:**
+  Works seamlessly with JavaScript, React, Vue, Svelte, and HTML files.
+
+- **Template Literal Detection:**
+  Scans both regular strings and template literals for unwanted placeholder text.
+
+- **Customizable:**
+  Easily add or override the list of strings to check according to your project's needs.
+
+- **Flexible Rule Disabling:**
+  Disable the rule on specific lines, blocks, or entire files as needed.
 
 ## Quick Start
-
 Add to your `.eslintrc.json`:
+
 ```json
 {
   "extends": ["plugin:lorem/recommended"]
 }
 ```
+> In a future version we will support flat configuration (`eslint.config.js`).
 
-That's it! The plugin will work with default settings.
+## Example Configuration
 
-## Manual Configuration
-
-If you prefer manual setup or need customization:
+Add the following to your ESLint configuration file:
 
 ```json
 {
   "plugins": ["lorem"],
   "rules": {
-    "lorem/no-lorem": "error"
+    "lorem/no-lorem": ["error", {
+      "strings": ["custom text"], // Add any additional strings you wish to check
+      "override": true // Set to true to completely replace default strings
+    }]
   }
 }
 ```
+This configuration tells ESLint to flag any occurrences of the specified strings, ensuring that your code remains professional and free from unwanted placeholder text.
 
-## Framework Support
+## Get Started
 
-Works out of the box with raw HTML files, React/JSX, Vue, Svelte. It is also compatible with template literals (escapes special characters) and regular TypeScript/JavaScript strings.
+Install the plugin via npm:
 
-For HTML files, add to your `.eslintrc.json`:
-```json
-{
-  "overrides": [
-    {
-      "files": ["*.html"],
-      "parser": "eslint-html-parser"
-    }
-  ]
-}
+```bash
+npm install eslint-plugin-lorem --save-dev
 ```
+Then integrate it into your ESLint configuration as shown above. Now you can rest easy knowing that any stray Lorem Ipsum or other placeholder text will be caught early in your development process.
+ 
+ 
+_Keep your codebase clean and professional with `eslint-plugin-lorem`—because placeholder text doesn't belong in production!_
 
-## Customization
+---
 
-### Add More Strings to Check
-```json
-{
-  "lorem/no-lorem": ["error", {
-    "strings": ["dummy text", "placeholder content"]
-  }]
-}
-```
+### Disabling the Rule
+Sometimes you may need to disable the rule:
 
-### Override Default Strings
-```json
-{
-  "lorem/no-lorem": ["error", {
-    "strings": ["only check this text"],
-    "override": true
-  }]
-}
-```
+- #### For a Single Line:
+  ```js
+  Copy
+  // eslint-disable-next-line lorem/no-lorem
+  const text = "Lorem ipsum dolor sit amet";
+  ```
+- #### For a Block:
+  ```js
+  /* eslint-disable lorem/no-lorem */
+  const text1 = "Lorem ipsum dolor sit amet";
+  const text2 = "Lorem ipsum dolor sit amet";
+  /* eslint-enable lorem/no-lorem */
+  ```
+- #### For an Entire File:
+  Place at the top of the file:
 
-### Custom Error Message
-```json
-{
-  "lorem/no-lorem": ["error", {
-    "message": "Please replace placeholder text"
-  }]
-}
-```
-
-## Disabling the Rule
-
-### For a Single Line
-```js
-// eslint-disable-next-line lorem/no-lorem
-const text = "Lorem ipsum dolor sit amet";
-```
-
-### For a Block
-```js
-/* eslint-disable lorem/no-lorem */
-const text1 = "Lorem ipsum dolor sit amet";
-const text2 = "Lorem ipsum dolor sit amet";
-/* eslint-enable lorem/no-lorem */
-```
-
-### For an Entire File
-At the top of the file:
-```js
-/* eslint-disable lorem/no-lorem */
-```
-
+  ```js
+  /* eslint-disable lorem/no-lorem */
+  ```
 ## Default Strings Checked
+  By default, the plugin checks for common placeholder strings such as:
+
 - "lorem"
 - "ipsum"
 - "לורם"
@@ -110,4 +100,4 @@ At the top of the file:
 
 ## License
 
-MIT-0
+This project is licensed under the MIT-0 License.

@@ -1,16 +1,16 @@
 {
-  "name": "eslint-plugin-lorem",
-  "version": "1.1.1",
-  "description": "ESLint plugin to prevent Lorem Ipsum usage",
-  "main": "lib/index.js",
-  "keywords": ["eslint", "eslintplugin", "lorem"],
-  "author": {
-    "name": "Ophir Bucai",
-    "email": "ophirbucai@gmail.com",
-    "url": "https://develophir.com"
-  },
-  "license": "MIT-0",
-  "peerDependencies": {
-    "eslint": ">=7"
-  }
+	"name": "eslint-plugin-lorem",
+	"version": "1.1.2",
+	"description": "ESLint plugin to prevent Lorem Ipsum usage",
+	"main": "lib/index.js",
+	"keywords": ["eslint", "eslintplugin", "lorem"],
+	"author": {
+		"name": "Ophir Bucai",
+		"email": "ophirbucai@gmail.com",
+		"url": "https://develophir.com"
+	},
+	"license": "MIT-0",
+	"peerDependencies": {
+		"eslint": ">=7"
+	}
 }
